@@ -27,8 +27,23 @@ form.addEventListener("submit", function (e) {
 
   console.log(savedPets);
 
-  if (savedPets.length > 1) {
-    alert(animal.compareOwners(savedPets));
+  const petContainer = document.getElementById("pet-container");
+
+  const getH5 = document.querySelectorAll("#pet-container h5");
+
+  getH5[0].innerHTML = animal.petName;
+  getH5[1].innerHTML = animal.ownerName;
+  getH5[2].innerHTML = animal.species;
+  getH5[3].innerHTML = animal.breed;
+
+  const printSection = document.getElementById("print-section");
+
+  printSection.classList.remove("d-none");
+
+  if (savedPets.length > 1 && animal.compareOwners(savedPets) === true) {
+    const h4 = document.querySelector("#print-section > div > h4");
+
+    h4.classList.remove("d-none");
   }
 
   form.reset();
